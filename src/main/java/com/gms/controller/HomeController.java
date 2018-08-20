@@ -25,7 +25,7 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)	// mapping은 key와 value를 준 것
-	public String home(HttpSession session, HttpServletRequest request) {			// 여기서의 Model은 POM.xml에서 전역으로 정의된 것 Model안에는 request가 들어있음.
+	public String home(HttpSession session, HttpServletRequest request) {			// 여기서의 Model은 POM.xml에서 전역으로 정의된 것 Model안에는 request가 들어있음..
 		String ctx = request.getContextPath();
 		logger.info("Welcome home! The client locale is {}.", ctx);
 		session.setAttribute("ctx", ctx);
