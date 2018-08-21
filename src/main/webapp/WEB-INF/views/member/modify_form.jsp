@@ -13,7 +13,7 @@
 	<form id="update_form" >
 	<table style="width:50%">
 	<tr>
-		<td rowspan="3" colspan="2" width="200" height="150"><img src="${img}/${profile}" width="200" height="150"/></td>
+		<td rowspan="3" colspan="2" >공란</td>
 		<td>아이디</td>
 		<td>${user.memID}</td>
 	</tr>
