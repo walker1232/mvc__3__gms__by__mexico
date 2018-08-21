@@ -165,10 +165,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
+			<groupId>javax.servlet.jsp</groupId> 
+			<artifactId>jsp-api</artifactId>	
 			<version>${jsp-version}</version>
-			<scope>provided</scope>
+			<scope>provided</scope>		
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -186,10 +186,10 @@
 		<!-- lombok -->
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
-		    <groupId>org.projectlombok</groupId>
-		    <artifactId>lombok</artifactId>
+		    <groupId>org.projectlombok</groupId>	<!-- 클래스 -->
+		    <artifactId>lombok</artifactId>			<!-- 객체 이름 중복되면 안됨 -->
 		    <version>${lombok-version}</version>
-		    <scope>provided</scope>
+		    <scope>provided</scope>					<!-- 제공된 스코프영역으로 제한 -->
 		</dependency>
 		
 		<!-- Tiles3 -->
