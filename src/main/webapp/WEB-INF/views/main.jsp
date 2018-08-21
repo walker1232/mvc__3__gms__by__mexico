@@ -4,14 +4,15 @@
 <head>
 	<title>Home</title>
 	
-	<!-- <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="${ctx}/resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'> -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	
 	<link rel="stylesheet" type="text/css" href="${ctx}/resources/vendor/bootstrap/css/bootstrap.css" />
 	<link rel="shortcut icon" href="${ctx}/resources/img/bears.ico" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<link href="${ctx}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="${ctx}/resources/css/clean-blog.css" />
 	<%-- <link rel="stylesheet" href="${ctx}/resources/css/style.css" /> --%>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -41,13 +42,16 @@
             <li class="nav-item">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
+            <li class="nav-item">
+            	<a class="nav-link" id="login_btn" href="#">Login</a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <header class="masthead" style="background-image: url('${ctx}/resources/img/home-bg.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -166,17 +170,19 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${ctx }/resources/vendor/jquery/jquery.min.js"></script>
+    <script src="${ctx }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="js/clean-blog.min.js"></script>
+    <script src="${ctx }/resources/js/clean-blog.min.js"></script>
     
     
 
 
 <script>
-	common.main('${ctx}');
+	/* document.getElementById('login_btn').addEventListener('click', function(){alert('로그인버튼 클릭');}); */
+	$('#login_btn').on('click', function(){alert('로그인 버튼 클릭 2');});
+	/* common.main('${ctx}'); */
 </script>
 
 </body>
