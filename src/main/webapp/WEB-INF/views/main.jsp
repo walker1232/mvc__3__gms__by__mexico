@@ -14,7 +14,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<link href="${ctx}/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="${ctx}/resources/css/clean-blog.css" />
-	<%-- <link rel="stylesheet" href="${ctx}/resources/css/style.css" /> --%>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="${ctx}/resources/js/app.js"></script>
@@ -170,18 +169,19 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="${ctx }/resources/vendor/jquery/jquery.min.js"></script>
-    <script src="${ctx }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="${ctx}/resources/vendor/jquery/jquery.min.js"></script>
+    <script src="${ctx}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="${ctx }/resources/js/clean-blog.min.js"></script>
+    <script src="${ctx}/resources/js/clean-blog.min.js"></script>
     
     
 
 
 <script>
+	app.init('${ctx}');
 	/* document.getElementById('login_btn').addEventListener('click', function(){alert('로그인버튼 클릭');}); */
-	$('#login_btn').on('click', function(){alert('로그인 버튼 클릭 2');});
+	/* $('#login_btn').on('click', function(){alert('로그인 버튼 클릭 2');}); */
 	/* common.main('${ctx}'); */
 </script>
 

@@ -31,7 +31,7 @@ public class HomeController {
 		session.setAttribute("ctx", ctx);
 		//model.addAttribute("serverTime", "" );
 		
-		return "main";
+		return "public:common/content.tiles";
 	}
 	
 }

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
-	<jsp:include page="../common/head.jsp"/>
+	<%-- <jsp:include page="../common/head.jsp"/> --%>
 <body>
 <div id="wrapper">
 	<div id="header">
@@ -33,7 +33,7 @@
 	</c:choose>
 	</div> <!-- content end -->
 	<div id ="footer">
-		<jsp:include page="../common/footer_box.jsp"/>
+		<%-- <jsp:include page="../common/footer_box.jsp"/> --%>
 	</div>
 </div>
 

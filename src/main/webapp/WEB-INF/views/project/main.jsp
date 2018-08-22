@@ -2,7 +2,7 @@
 
 <!doctype html>
 <html lang="en">
-	<jsp:include page="../common/head.jsp"/>
+	<%-- <jsp:include page="../common/head.jsp"/> --%>
 <body>
 <div id="wrapper">
 	<div id="header">
@@ -11,10 +11,10 @@
 		<jsp:include page="../common/menu_box.jsp"/>
 	</div> <!-- header end -->
 	<div id="content">
-		<jsp:include page="../common/content_box.jsp"/>
+		<%-- <jsp:include page="../common/content_box.jsp"/> --%>
 	</div> <!-- content end -->
 	<div id ="footer">
-		<jsp:include page="../common/footer_box.jsp"/>
+		<%-- <jsp:include page="../common/footer_box.jsp"/> --%>
 	</div>
 </div>
 

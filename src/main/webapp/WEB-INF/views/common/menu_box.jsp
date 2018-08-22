@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-	<jsp:include page="head.jsp"/>
+	<%-- <jsp:include page="head.jsp"/> --%>
 <div id="menu-box">
 			<ul id="menu">
 				<li><a href="">HOME</a></li>
