@@ -22,10 +22,7 @@
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
             <li class="nav-item">
-            	<a class="nav-link" id="login_btn" href="#">Login</a>
-            </li>
-            <li class="nav-item">
-            	<a class="nav-link" id="join_btn" href="#">Join</a>
+            	<a class="nav-link" id="logout_btn" href="#">Logout</a>
             </li>
           </ul>
         </div>

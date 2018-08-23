@@ -31,14 +31,14 @@
 		<input type="checkbox" name="subject" value="linux"/>Linux
 		<input type="checkbox" name="subject" value="html"/>HTML
 		<input type="checkbox" name="subject" value="spring"/>Spring <br />
-		<input id="JoinFormBtn" type=button value="Join">
+		<input id="join_form_btn" type=button value="Join">
 	</form>
 	</div> <!-- content end -->
 	
 
 	
 	<script>
-		document.getElementById('JoinFormBtn').addEventListener('click', function(){
+		document.getElementById('join_form_btn').addEventListener('click', function(){
 			var x = service.nullChecker([document.join_form.memid.value, document.join_form.pass.value, 
 										document.join_form.name.value, document.join_form.ssn.value]);
 			if(x.checker){

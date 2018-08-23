@@ -13,7 +13,7 @@
 	<div id="content">
 		<c:choose>
 			<c:when test="${pagename eq 'add'}">
-				<jsp:include page="add_form.jsp"/>
+				<jsp:include page="add.jsp"/>
 			</c:when>
 			<c:when test="${pagename eq 'login'}">
 			<jsp:include page="login.jsp"/>
@@ -22,10 +22,10 @@
 				<jsp:include page="search.jsp"/>
 			</c:when>
 			<c:when test="${pagename eq 'remove'}">
-				<jsp:include page="remove_form.jsp"/>
+				<jsp:include page="remove.jsp"/>
 			</c:when>
 			<c:when test="${pagename eq 'modify'}">
-				<jsp:include page="modify_form.jsp"/>
+				<jsp:include page="modify.jsp"/>
 			</c:when>
 		<c:otherwise>
              <jsp:include page="retrieve.jsp"/>
@@ -38,6 +38,7 @@
 </div>
 
 <script>
+	
 	member.main('${ctx}');
 </script>
 </body>

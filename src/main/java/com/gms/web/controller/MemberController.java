@@ -1,5 +1,7 @@
 package com.gms.web.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,11 +23,15 @@ public class MemberController {
 	@RequestMapping("/romove")
 	public void remove() {}
 	@RequestMapping("/login")
-	public void login() {}
+	public String login() {
+		HomeController.logger.info("MemberController login ::: {}.", "ENTER");
+		return "login_success";
+	}
 	@RequestMapping("/logout")
-	public void logout() {}
-	@RequestMapping("/move")
-	public void move() {}
+	public String logout() {
+		HomeController.logger.info("MemberController logout ::: {}.");
+		return "redirect:/";
+	}
 	@RequestMapping("/fileupload")
 	public void fileupload() {}
 }
