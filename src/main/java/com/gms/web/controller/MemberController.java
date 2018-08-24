@@ -30,7 +30,7 @@ public class MemberController {
 	@RequestMapping("/login")
 	public String login() {
 		logger.info("MemberController login ::: {}.", "ENTER");
-		/*member.setName("");  */
+		/*member.setName("");*/
 		return "login_success";
 	}
 	@RequestMapping("/logout")
