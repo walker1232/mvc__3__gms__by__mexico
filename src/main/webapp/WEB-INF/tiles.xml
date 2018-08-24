@@ -21,6 +21,7 @@
     	<put-attribute name="nav" value="/WEB-INF/views/member/auth.jsp"/>
     	<put-attribute name="content" value="/WEB-INF/views/common/content.jsp"/>
     </definition>
+    
 </tiles-definitions>
 
 

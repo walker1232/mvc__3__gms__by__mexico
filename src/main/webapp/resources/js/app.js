@@ -29,6 +29,7 @@ app = {
 	    		alert('회원가입 버튼 클릭');
 	    		location.href = app.x()+'/move/auth/member/auth';
 	    	});
+	    	
 	    	$('#logout_btn').click(()=>{
 	    		alert('로그아웃 버튼 클릭');
 	    		location.href = app.x()+'/member/logout';

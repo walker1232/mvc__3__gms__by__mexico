@@ -22,7 +22,7 @@
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
             <li class="nav-item">
-            	<a class="nav-link" id="logout_btn" href="#">Logout</a>
+            	<a class="nav-link" id="logout_btn" >Logout</a>
             </li>
           </ul>
         </div>
