@@ -1,15 +1,19 @@
-package com.gms.web.repository.impl;
+package com.gms.web.repository.mapper;
 
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.gms.web.domain.MemberDTO;
 import com.gms.web.repository.MemberDAO;
 @Repository
 public class MemberDAOImpl implements MemberDAO{
-
+	@Autowired SqlSessionFactory factory;
+	private static final String ns = "com.gms.web.mapper.MemberMapper";
 	@Override
 	public void insert(MemberDTO p) {
 		// TODO Auto-generated method stub
@@ -30,8 +34,9 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public MemberDTO selectOne(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession sqlSession = factory.openSession();
+		/*(memberDTO) sqlSession.selectOne(ns+".selectOne", p)*/
+		return (MemberDTO)sqlSession.selectOne(ns+".selectOne", p);
 	}
 
 	@Override

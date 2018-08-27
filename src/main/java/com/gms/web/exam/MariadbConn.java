@@ -16,10 +16,10 @@ public class MariadbConn {
 											   "mariadb",
 											   "mariadb");
 			stmt = conn.createStatement();
-			String sql = String.format(" SELECT USERID FROM MEMBER ");
+			String sql = String.format(" SELECT memID FROM MEMBER ");
 			ResultSet rs = stmt.executeQuery(sql);
 			if(rs.next()) {
-				s = rs.getString("USERID");
+				s = rs.getString("memID");
 			}else {
 				s = "연결실패";
 			}
