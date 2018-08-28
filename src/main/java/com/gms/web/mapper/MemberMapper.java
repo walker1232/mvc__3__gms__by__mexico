@@ -1,4 +1,4 @@
-package com.gms.web.repository.mapper;
+package com.gms.web.mapper;
 
 import java.util.List;
 import java.util.Map;
@@ -11,12 +11,14 @@ import org.springframework.stereotype.Repository;
 import com.gms.web.domain.MemberDTO;
 import com.gms.web.repository.MemberDAO;
 @Repository
-public class MemberDAOImpl implements MemberDAO{
+public class MemberMapper implements MemberDAO{
 	@Autowired SqlSessionFactory factory;
 	private static final String ns = "com.gms.web.mapper.MemberMapper";
 	@Override
 	public void insert(MemberDTO p) {
-		// TODO Auto-generated method stub
+		System.out.println("ADD 3 " + p);
+		SqlSession sqlSession = factory.openSession();
+		sqlSession.insert(ns+".insert", p);
 		
 	}
 
@@ -33,9 +35,8 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public MemberDTO selectOne(Map<?, ?> p) {
+	public MemberDTO selectOne(MemberDTO p) {
 		SqlSession sqlSession = factory.openSession();
-		/*(memberDTO) sqlSession.selectOne(ns+".selectOne", p)*/
 		return (MemberDTO)sqlSession.selectOne(ns+".selectOne", p);
 	}
 
@@ -46,21 +47,22 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public void update(Map<?, ?> p) {
+	public void update(MemberDTO p) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(Map<?, ?> p) {
+	public void delete(MemberDTO p) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean login(Map<?, ?> p) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean login(MemberDTO p) {
+		System.out.println("Login 5 " + p);
+		SqlSession sqlSession = factory.openSession();
+		return sqlSession.selectOne(ns+".login", p) != null;
 	}
 
 }

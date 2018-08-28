@@ -10,10 +10,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="index.html">${user.name}님의 홈</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" id="retrieve_btn">mypage</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="post.html">Sample Post</a>

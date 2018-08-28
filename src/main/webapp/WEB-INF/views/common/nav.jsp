@@ -19,13 +19,13 @@
               <a class="nav-link" href="post.html">Sample Post</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="search_btn">Search</a>
             </li>
             <li class="nav-item">
             	<a class="nav-link" id="login_btn" >Login</a>
             </li>
             <li class="nav-item">
-            	<a class="nav-link" id="join_btn" >Join</a>
+            	<a class="nav-link" id="add_btn" >Join</a>
             </li>
           </ul>
         </div>

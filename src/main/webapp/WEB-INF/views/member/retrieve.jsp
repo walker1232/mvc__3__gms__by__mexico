@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 	<div id="content">
-		<div>
-	<a id="myPage2MoveToUpdate">UPDATE FORM 이동</a>
-	<a id="myPage2MoveToDelete">DELETE FORM 이동</a>
+		<div style="margin: auto" align="center">
+	<a id="modify_btn">UPDATE FORM 이동</a>
+	<a id="remove_btn">DELETE FORM 이동</a>
 		</div>
 	<div>
-<h1>마이페이지 진입</h1>
-<table style="width:50%">
+
+<table style="width:50%; margin: auto" border="1" >
 	<tr>
 		<td rowspan="3" width="200" height="150"><img src="${img}/${profile}" width="200" height="150"/></td>
 		<td>아이디</td>
@@ -39,17 +39,3 @@
 
 
 
-<script>
-	document.getElementById('myPage2MoveToUpdate').addEventListener('click', function(){
-		router.move({ctx : '${ctx}',
-					 domain : 'member',
-					 action : 'move',
-					 page : 'modify'});
-	});
-	document.getElementById('myPage2MoveToDelete').addEventListener('click', function(){
-		router.move({ctx : '${ctx}',
-					 domain : 'member',
-					 action : 'move',
-					 page : 'remove'});
-	});
-</script>

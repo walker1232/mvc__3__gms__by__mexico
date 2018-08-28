@@ -7,7 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gms.web.domain.MemberDTO;
 import com.gms.web.service.MemberService;
@@ -15,11 +18,19 @@ import com.gms.web.service.MemberService;
 @Controller
 @RequestMapping("/member")
 public class MemberController {	
-	static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Autowired MemberDTO member;
 	@Autowired MemberService memberService;
-	@RequestMapping("/add")
-	public void add() {}
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public String add(@ModelAttribute MemberDTO member) {
+		logger.info("MemberController add ::: {}.", "add");
+		System.out.println("ADD 1 " + member);
+		memberService.add(member);
+		/*Map<String, Object> p = new HashMap<>();
+		p.put("add", member);
+		System.out.println("name is "+ member.getName());*/
+		return "login_page";
+	}
 	@RequestMapping("/list")
 	public void list() {}
 	@RequestMapping("/search")
@@ -28,20 +39,26 @@ public class MemberController {
 	public void retrieve() {}
 	@RequestMapping("/count")
 	public void count() {}
-	@RequestMapping("/modify")
-	public void modify() {}
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public void modify(@ModelAttribute MemberDTO member, Model model) {
+		
+	}
 	@RequestMapping("/romove")
-	public void remove() {}
-	@RequestMapping("/login")
-	public String login() {
+	public void remove(@ModelAttribute MemberDTO member, Model model) {
+		
+	}
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String login(@ModelAttribute MemberDTO member, Model model) {
 		logger.info("MemberController login ::: {}.", "ENTER");
-		Map<String, String> p = new HashMap<>();
-		p.put("memID", "A10");
-		MemberDTO m = memberService.retrieve(p);
-		System.out.println("----------");
-		System.out.println(m.getName());
-		System.out.println("----------");
-		return "login_success";
+		boolean m = memberService.login(member);
+		String f = "";
+		if(m == true) {
+			f = "login_success";
+			model.addAttribute("user", memberService.retrieve(member));
+		}else {
+			f = "login_page";
+		}
+		return f;
 	}
 	@RequestMapping("/logout")
 	public String logout() {

@@ -10,7 +10,7 @@
 
 	
 	<div id="content">
-	<form id="update_form" >
+	<form id="modify_form" >
 	<table style="width:50%">
 	<tr>
 		<td rowspan="3" colspan="2" >공란</td>
@@ -23,18 +23,18 @@
 	</tr>
 	<tr>
 		<td>비번</td>
-		<td ><input type="text" name="pass" placeholder="****"></td>
+		<td ><input type="text" name="password" placeholder="****"></td>
 	</tr>
 	<tr>
 		<td>나이</td>
 		<td>${user.age}</td>
 		<td>${user.teamID}</td>
 		<td>
-			<input type="radio" id="teamid_1" name="teamid" value="none" checked="checked"/>없음
-			<input type="radio" id="teamid_2" name="teamid" value="nolja"/>걍놀자
-			<input type="radio" id="teamid_3" name="teamid" value="jieunHouse"/>지은이네
-			<input type="radio" id="teamid_4" name="teamid" value="turtleKing"/>터틀킹
-			<input type="radio" id="teamid_5" name="teamid" value="codingZzang"/>코딩짱
+			<input type="radio" id="teamid_1" name="teamID" value="none" checked="checked"/>없음
+			<input type="radio" id="teamid_2" name="teamID" value="nolja"/>걍놀자
+			<input type="radio" id="teamid_3" name="teamID" value="jieunHouse"/>지은이네
+			<input type="radio" id="teamid_4" name="teamID" value="turtleKing"/>터틀킹
+			<input type="radio" id="teamid_5" name="teamID" value="codingZzang"/>코딩짱
 		</td>
 	</tr>
 	<tr>
@@ -52,40 +52,14 @@
 		</td>
 	</tr>
 </table>
-	<input type="button" id="updateConfirmBtn" value="수정확인"/>
+	<input type="button" id="modify_submit" value="수정확인"/>
 </form>
 	</div> <!-- content end -->
 	
-	<form method="POST" enctype="multipart/form-data" action="${ctx}/member.do?action=fileupload&page=retrieve">
+<%-- 	<form method="POST" enctype="multipart/form-data" action="${ctx}/member.do?action=fileupload&page=retrieve">
 	    파일업로드: <input type="file" name="upfile"><br/>
 	  <input type="submit" value="파일업로드">
 	</form>
+ --%>
 
-
-<script>
-    var form = document.getElementById('update_form');
-    var roll = document.getElementById("roll");
-    for(var i = 0; i < roll.options.length; i++){
-    	if(roll.options[i].value === '${user.roll}'){
-    		roll.options[i].setAttribute("selected", "selected");
-    	}
-    }
-    form.roll.setAttribute("selected","selected");
-	document.getElementById('updateConfirmBtn').addEventListener('click', function(){
-		alert('수정확인버튼 클릭함!!');
-		//var form = document.getElementById('update_form');
-		form.action = "${ctx}/member.do";
-		form.method = "post";
-		var node = document.createElement('input');
-		node.innerHTML = '<input type="hidden" name="action" value="modify" />';
-		form.appendChild(node);
-		form.submit();
-	});
-	
-	 for(var i=1; i<=5; i++){
-	        if(document.getElementById('teamid_'+i).value==='${user.teamID}'){
-	        document.getElementById('teamid_'+i).checked = true;
-	        } 
-	    }
-</script>
 
