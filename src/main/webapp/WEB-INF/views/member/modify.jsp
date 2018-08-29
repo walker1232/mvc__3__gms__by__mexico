@@ -9,13 +9,14 @@
 	</style>
 
 	
-	<div id="content">
+	<div id="content" align="center">
 	<form id="modify_form" >
 	<table style="width:50%">
 	<tr>
-		<td rowspan="3" colspan="2" >공란</td>
+		<!-- <td rowspan="3" colspan="2" >공란</td> -->
 		<td>아이디</td>
-		<td>${user.memID}</td>
+		<td>${memID}</td>
+		<%-- <td>${user.memID}</td> --%>
 	</tr>
 	<tr>
 		<td>이름</td>
@@ -62,4 +63,6 @@
 	</form>
  --%>
 
-
+<script>
+	app.user.get(x)
+</script>

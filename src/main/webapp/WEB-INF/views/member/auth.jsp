@@ -28,3 +28,6 @@
         </div>
       </div>
     </nav>
+    <script>
+    	app.user.set('memID')
+    </script>

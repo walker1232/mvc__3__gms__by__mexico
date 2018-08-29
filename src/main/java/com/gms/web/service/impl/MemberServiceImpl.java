@@ -53,13 +53,14 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void modify(MemberDTO p) {
-		// TODO Auto-generated method stub
+		memberDAO.update(p);
 		
 	}
 
 	@Override
 	public void remove(MemberDTO p) {
-		// TODO Auto-generated method stub
+		System.out.println("remove 2 " + p.getMemID());
+		memberDAO.delete(p);
 		
 	}
 

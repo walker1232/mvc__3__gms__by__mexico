@@ -48,14 +48,15 @@ public class MemberMapper implements MemberDAO{
 
 	@Override
 	public void update(MemberDTO p) {
-		// TODO Auto-generated method stub
+		System.out.println("modify " + p.getMemID());
+		factory.openSession().update(ns+".update", p);
 		
 	}
 
 	@Override
 	public void delete(MemberDTO p) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("remove 3 " + p.getName() + " " + p.getPassword());
+		factory.openSession().delete(ns+".delete", p);
 	}
 
 	@Override

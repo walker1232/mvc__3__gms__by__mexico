@@ -8,6 +8,16 @@ app = {
 			app.session.ctx(x);
 			app.onCreate();
 	    },
+	    setUser : x=>{
+			sessionStorage.setItem('memID',x.memID);
+			sessionStorage.setItem('name',x.name);
+			sessionStorage.setItem('teamID',x.teamID);
+			sessionStorage.setItem('ssn',x.ssn);
+			sessionStorage.setItem('gender',x.gender);
+			sessionStorage.setItem('age',x.age);
+			sessionStorage.setItem('roll',x.roll);
+			sessionStorage.setItem('subject',x.subject);
+		},
 	    onCreate : ()=>{
 	    	console.log('step 3 ::');
 	    	app.setContenView();
@@ -21,7 +31,8 @@ app = {
 	    	$('#login_submit').click(()=>{
 	    		alert('로그인 버튼 클릭');
 	    		
-	    		$('#login_form').attr({action:app.x()+"/member/login", method:"POST"}).submit();
+	    		$('#login_form').attr({action:app.x()+"/member/login", 
+	    			method:"POST"}).submit();
 	    		app.session.ctx(x);
 	    		/*var from = $('user_login_form');
 	    		from.action = app.x() + "/member/login";
@@ -41,7 +52,8 @@ app = {
 	    	$('#add_submit').click(()=>{
 	    		alert('add_submit !!');
 	    	
-	    		$('#add_form').attr({action:app.x()+"/member/add", method:"POST"}).submit();
+	    		$('#add_form').attr({action:app.x()+"/member/add", 
+	    			method:"POST"}).submit();
 	    		
 	    		/*var form = document.getElementById('join_form');
 				form.action = app.x() + "/member/add";
@@ -55,16 +67,21 @@ app = {
 	    		location.href = app.x()+'/move/public/member/modify';
 	    	});
 	    	$('#modify_submit').click(()=>{
-	    		$('#modify_form').attr({action:app.x()+"/member/modify", method:"POST"}).submit();
+	    		$('#modify_form').attr({action:app.x()+"/member/modify", 
+	    			method:"POST"}).submit();
 	    	});
 	    	$('#remove_btn').click(()=>{
 	    		alert('삭제 버튼 클릭');
 	    		location.href = app.x()+'/move/public/member/remove';
 	    	});
 	    	$('#remove_submit').click(()=>{
-	    		$('#remove_form').attr({action:appx()+"/member/remove", method:"POST"}).submit();
+	    		$('#remove_form').attr({action:app.x()+"/member/remove", 
+	    			method:"POST"}).submit();
 	    	});
-	    	
+	    	/*$('#retrieve_btn').click(()=>{
+	    		alert('마이페이스 버튼 클릭');
+	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'retrieve';
+	    	});*/
 	    },
 	    setContenView : ()=>{
 	    	console.log('step 4 ::'+app.session.path('js'));
@@ -96,3 +113,45 @@ app.i = ()=>{
 	return app.session.path('img');
 };
 
+app.memID=()=>{
+	return app.sessionStorage.getItem('memID');
+}
+app.name=()=>{
+	return app.sessionStorage.getItem('name');
+}
+app.teamID=()=>{
+	return app.sessionStorage.getItem('teamID')
+}
+app.ssn=()=>{
+	return app.sessionStorage.getItem('ssn');
+}
+app.gender=()=>{
+	return app.sessionStorage.getItem('gender');
+}
+app.age=()=>{
+	return app.sessionStorage.getItem('age');
+}
+app.roll=()=>{
+	return app.sessionStorage.getItem('roll');
+}
+app.subject=()=>{
+	return app.sessionStorage.getItem('subject');
+}
+
+/*var user = {
+		set : x=>{
+			sessionStorage.setItem('memID',x.memID);
+			sessionStorage.setItem('teamID',x.teamID);
+			sessionStorage.setItem('name',x.name);
+			sessionStorage.setItem('roll',x.roll);
+			sessionStorage.setItem('password',x.password);
+			sessionStorage.setItem('ssn',x.ssn);
+			sessionStorage.setItem('gender',x.gender);
+			sessionStorage.setItem('age',x.age);
+			sessionStorage.setItem('subject',x.subject);
+		},
+		get : x=>{
+			return sessionStorage.getItem(x);
+		}
+};
+*/

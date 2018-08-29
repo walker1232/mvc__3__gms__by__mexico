@@ -15,4 +15,14 @@
   INSERT INTO member (memID, teamID, name, age, roll, password, ssn, gender)
   	VALUES(#{memID}, #{teamID}, #{name}, #{age}, #{roll}, #{password}, #{ssn}, #{gender})
   </insert>
+  <delete id="delete">
+  DELETE FROM MEMBER where memID LIKE #{memID} AND password LIKE #{password}
+</delete>
+<update id="update">
+  UPDATE MEMBER SET
+    password = #{password},
+    teamID = #{teamID},
+    roll = #{roll}
+  WHERE memID = #{memID}
+</update>
 </mapper>
