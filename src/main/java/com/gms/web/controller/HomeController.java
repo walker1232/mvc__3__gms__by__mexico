@@ -30,7 +30,7 @@ public class HomeController {
 		String ctx = request.getContextPath();
 		logger.info("Welcome home! The client locale is {}.", ctx);
 		session.setAttribute("ctx", ctx);
-		//model.addAttribute("ctx", ctx );
+		//model.addAttribute("ctx", ctx);
 		
 		return "public:common/content.tiles";
 	}
