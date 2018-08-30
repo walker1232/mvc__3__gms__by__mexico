@@ -13,5 +13,5 @@ public interface MemberMapper {
 	public int count(Map<?,?>p);
 	public void update(MemberDTO p);
 	public void delete(MemberDTO p);
-	public boolean login(MemberDTO p);
+	public MemberDTO login(MemberDTO p);
 }

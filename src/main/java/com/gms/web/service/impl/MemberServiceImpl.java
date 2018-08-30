@@ -65,7 +65,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public boolean login(MemberDTO p) {
+	public MemberDTO login(MemberDTO p) {
 		System.out.println("Login 4 " + p);
 		return memberDAO.login(p);
 	}

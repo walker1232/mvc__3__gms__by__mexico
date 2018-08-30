@@ -14,8 +14,7 @@
 	<tr>
 		<!-- <td rowspan="3" colspan="2" >공란</td> -->
 		<td>아이디</td>
-		<td>${memID}</td>
-		<%-- <td>${user.memID}</td> --%>
+		<td>${user.memID}<input type="hidden" name="memID" value="${user.memID}"/></td>
 	</tr>
 	<tr>
 		<td>이름</td>
@@ -62,6 +61,4 @@
 	</form>
  --%>
 
-<script>
-	$('#memID').attr("value", user.get('memID'));
-</script>
+

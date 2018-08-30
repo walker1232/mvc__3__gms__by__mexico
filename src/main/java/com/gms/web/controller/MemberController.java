@@ -46,20 +46,34 @@ public class MemberController {
 		return "retrieve_page";*/
 		member.setMemID(memID);
 		String res = "";
-		if(action.equals("modify")) {
+		switch(action) {
+		case "modify":
+			logger.info("MemberController modify ::: {}.", "modify");
+			res = "modify_page";
+			break;
+		case "remove":
+			logger.info("MemberController remove ::: {}.", "remove");
+			res = "remove_page";
+			break;
+		default:
+			logger.info("MemberController retrieve ::: {}.", "retrieve");
+			res = "retrieve_page";
+			break;
+		}
+		/*if(action.equals("modify")) {
 			res = "modify_page";
 		}else if(action.equals("remove")) {
 			res = "remove_page";
 		}else {
 			res = "retrieve_page";
-		}
+		}*/
 		model.addAttribute("user", memberService.retrieve(member));
 		return res;
 	}
 	@RequestMapping("/count")
 	public void count() {}
-	@RequestMapping(value="/modify{memID}", method=RequestMethod.POST)
-	public String modify(@ModelAttribute("member") MemberDTO member, Model model, @PathVariable String memID) {
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String modify(@ModelAttribute("member") MemberDTO member, Model model) {
 		logger.info("MemberController modify ::: {}.", "ENTER");
 		System.out.println("modify 1 " + member.getMemID());
 		//member.setMemID(memID);
@@ -69,19 +83,26 @@ public class MemberController {
 		//model.addAttribute("user", m);
 		return "retrieve_page";
 	}
-	@RequestMapping(value="/romove", method=RequestMethod.POST)
-	public String remove(@ModelAttribute MemberDTO member, Model model) {
+	@RequestMapping(value="/remove", method=RequestMethod.POST)
+	public String remove(@ModelAttribute("member") MemberDTO member, Model model) {
 		logger.info("MemberController remove ::: {}.", "ENTER");
 		System.out.println("remove 1 " + member.getMemID());
-		System.out.println("member session : "+ member.getMemID());
+		System.out.println("member session : "+ member.getPassword());
 		memberService.remove(member);
 		return "redirect:/";
 	}
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(@ModelAttribute MemberDTO member, Model model) {
+	public String login(@ModelAttribute("member") MemberDTO member, Model model) {
 		logger.info("MemberController login ::: {}.", "ENTER");
-		boolean m = memberService.login(member);
+		//boolean m = memberService.login(member);
+		member = memberService.login(member);
 		String f = "";
+		if(member != null) {
+			f = "login_success";
+			model.addAttribute("user", memberService.retrieve(member));
+		}else {
+			f = "login_page";
+		}
 		
 		/*if(m == true) {
 		f = "login_success";
@@ -91,12 +112,12 @@ public class MemberController {
 		f = "login_page";
 		}*/
 		
-		if(m == true) {
+		/*if(m == true) {
 			f = "login_success";
 			model.addAttribute("user", memberService.retrieve(member));
 		}else {
 			f = "login_page";
-		}
+		}*/
 		return f;
 	}
 	@RequestMapping("/logout")

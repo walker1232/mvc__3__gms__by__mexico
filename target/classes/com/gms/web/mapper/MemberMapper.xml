@@ -7,7 +7,7 @@
     SELECT * from MEMBER 
     WHERE memID LIKE #{memID}
   </select>
-  <select id="login" resultType="boolean">
+  <select id="login" resultType="com.gms.web.domain.MemberDTO">
   	SELECT * FROM MEMBER
   	<!-- WHERE ${memID} LIKE #{memID} AND ${password} LIKE #{password} -->
 	WHERE memID LIKE #{memID} AND password LIKE #{password}

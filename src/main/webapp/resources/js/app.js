@@ -61,18 +61,19 @@ app = {
 	    	});
 	    	$('#modify_btn').click(()=>{
 	    		alert('업데이트 버튼 클릭');
-	    		location.href = app.x()+'/move/public/member/modify';
+	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/modify';
+	    		/*location.href = app.x()+'/move/public/member/modify';*/
 	    	});
 	    	$('#modify_submit').click(()=>{
-	    		$('#modify_form').attr({action:app.x()+"/member/modify"+user.get('memID')+'/modify', 
+	    		$('#modify_form').attr({action:app.x()+"/member/modify", 
 	    			method:"POST"}).submit();
 	    	});
 	    	$('#remove_btn').click(()=>{
 	    		alert('삭제 버튼 클릭');
-	    		location.href = app.x()+'/move/public/member/remove';
+	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/remove';
 	    	});
 	    	$('#remove_submit').click(()=>{
-	    		$('#remove_form').attr({action:app.x()+"/member/remove"+user.get('memID')+'/remove', 
+	    		$('#remove_form').attr({action:app.x()+"/member/remove", 
 	    			method:"POST"}).submit();
 	    	});
 	    	$('#retrieve_btn').click(()=>{
