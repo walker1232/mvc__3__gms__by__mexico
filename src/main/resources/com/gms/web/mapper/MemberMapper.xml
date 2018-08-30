@@ -9,7 +9,8 @@
   </select>
   <select id="login" resultType="boolean">
   	SELECT * FROM MEMBER
-  	WHERE memID LIKE #{memID} AND password LIKE #{password}
+  	<!-- WHERE ${memID} LIKE #{memID} AND ${password} LIKE #{password} -->
+	WHERE memID LIKE #{memID} AND password LIKE #{password}
   </select>
   <insert id="insert">
   INSERT INTO member (memID, teamID, name, age, roll, password, ssn, gender)

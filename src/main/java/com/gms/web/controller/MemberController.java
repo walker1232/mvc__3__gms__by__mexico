@@ -38,7 +38,13 @@ public class MemberController {
 	@RequestMapping("/search")
 	public void search() {}
 	@RequestMapping("/retrieve/{memID}/{action}")
-	public String retrieve(@PathVariable String memID, @PathVariable String action, Model model) {
+	public String retrieve(@PathVariable String memID, @PathVariable String action ,Model model) {
+		logger.info("\n--------- MemberController {} !!-----","retrieve()");
+		System.out.println(memID);
+		/*MemberDTO m = memberService.retrieve(memID);
+		model.addAttribute("user", m);
+		return "retrieve_page";*/
+		member.setMemID(memID);
 		String res = "";
 		if(action.equals("modify")) {
 			res = "modify_page";
@@ -47,30 +53,44 @@ public class MemberController {
 		}else {
 			res = "retrieve_page";
 		}
-		member.setMemID(memID);
 		model.addAttribute("user", memberService.retrieve(member));
 		return res;
 	}
 	@RequestMapping("/count")
 	public void count() {}
-	@RequestMapping(value="/modify", method=RequestMethod.POST)
-	public void modify(@ModelAttribute MemberDTO member, Model model) {
+	@RequestMapping(value="/modify{memID}", method=RequestMethod.POST)
+	public String modify(@ModelAttribute("member") MemberDTO member, Model model, @PathVariable String memID) {
 		logger.info("MemberController modify ::: {}.", "ENTER");
 		System.out.println("modify 1 " + member.getMemID());
+		//member.setMemID(memID);
 		memberService.modify(member);
+		model.addAttribute("user", memberService.retrieve(member));
+		//MemberDTO m = memberService.retrieve(memID);
+		//model.addAttribute("user", m);
+		return "retrieve_page";
 	}
 	@RequestMapping(value="/romove", method=RequestMethod.POST)
-	public void remove(@ModelAttribute MemberDTO member, Model model) {
+	public String remove(@ModelAttribute MemberDTO member, Model model) {
 		logger.info("MemberController remove ::: {}.", "ENTER");
 		System.out.println("remove 1 " + member.getMemID());
 		System.out.println("member session : "+ member.getMemID());
 		memberService.remove(member);
+		return "redirect:/";
 	}
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@ModelAttribute MemberDTO member, Model model) {
 		logger.info("MemberController login ::: {}.", "ENTER");
 		boolean m = memberService.login(member);
 		String f = "";
+		
+		/*if(m == true) {
+		f = "login_success";
+		MemberDTO mem = memberService.retrieve(member.getMemID());
+		model.addAttribute("user", mem);
+		}else {
+		f = "login_page";
+		}*/
+		
 		if(m == true) {
 			f = "login_success";
 			model.addAttribute("user", memberService.retrieve(member));

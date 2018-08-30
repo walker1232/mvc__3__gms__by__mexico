@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% String ctx = application.getContextPath(); %>
+
 
 
 	<style>
@@ -8,7 +8,6 @@
 	}
 	</style>
 
-	
 	<div id="content" align="center">
 	<form id="modify_form" >
 	<table style="width:50%">
@@ -64,5 +63,5 @@
  --%>
 
 <script>
-	app.user.get(x)
+	$('#memID').attr("value", user.get('memID'));
 </script>

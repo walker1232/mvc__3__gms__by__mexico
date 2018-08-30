@@ -2,21 +2,17 @@
 
 
 var app = app || {};
+var user = user || {};
 app = {
 		init : x => {
 			console.log('step 1 ::');
 			app.session.ctx(x);
 			app.onCreate();
 	    },
+	    
 	    setUser : x=>{
 			sessionStorage.setItem('memID',x.memID);
-			sessionStorage.setItem('name',x.name);
-			sessionStorage.setItem('teamID',x.teamID);
-			sessionStorage.setItem('ssn',x.ssn);
-			sessionStorage.setItem('gender',x.gender);
-			sessionStorage.setItem('age',x.age);
-			sessionStorage.setItem('roll',x.roll);
-			sessionStorage.setItem('subject',x.subject);
+			alert('app.memID() : '+ app.memID()); 
 		},
 	    onCreate : ()=>{
 	    	console.log('step 3 ::');
@@ -41,6 +37,7 @@ app = {
 	    		
 	    		/*location.href = app.x()+'/member/login/A10/1';*/
 	    	});
+	    	
 	    	$('#logout_btn').click(()=>{
 	    		alert('로그아웃 버튼 클릭');
 	    		location.href = app.x()+'/member/logout';
@@ -67,7 +64,7 @@ app = {
 	    		location.href = app.x()+'/move/public/member/modify';
 	    	});
 	    	$('#modify_submit').click(()=>{
-	    		$('#modify_form').attr({action:app.x()+"/member/modify", 
+	    		$('#modify_form').attr({action:app.x()+"/member/modify"+user.get('memID')+'/modify', 
 	    			method:"POST"}).submit();
 	    	});
 	    	$('#remove_btn').click(()=>{
@@ -75,13 +72,15 @@ app = {
 	    		location.href = app.x()+'/move/public/member/remove';
 	    	});
 	    	$('#remove_submit').click(()=>{
-	    		$('#remove_form').attr({action:app.x()+"/member/remove", 
+	    		$('#remove_form').attr({action:app.x()+"/member/remove"+user.get('memID')+'/remove', 
 	    			method:"POST"}).submit();
 	    	});
-	    	/*$('#retrieve_btn').click(()=>{
+	    	$('#retrieve_btn').click(()=>{
 	    		alert('마이페이스 버튼 클릭');
-	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'retrieve';
-	    	});*/
+	    		/*location.href = app.x()+'/move/public/member/retrieve';*/
+	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/retrieve';
+	    	});
+	    	
 	    },
 	    setContenView : ()=>{
 	    	console.log('step 4 ::'+app.session.path('js'));
@@ -113,7 +112,24 @@ app.i = ()=>{
 	return app.session.path('img');
 };
 
-app.memID=()=>{
+app.userid = ()=>{
+	return sessionStorage.getItem('memID');
+}
+
+
+user.session = x =>{
+	$.each(x, (k, v)=>{
+		/*alert('key:'+k+', value:'+v);*/
+		sessionStorage.setItem(k, v);
+	});
+	/*alert(sessionStorage.getItem('memID'));*/
+}
+
+user.get = x=>{
+	return sessionStorage.getItem(x);
+}
+
+/*app.memID=()=>{
 	return app.sessionStorage.getItem('memID');
 }
 app.name=()=>{
@@ -136,7 +152,7 @@ app.roll=()=>{
 }
 app.subject=()=>{
 	return app.sessionStorage.getItem('subject');
-}
+}*/
 
 /*var user = {
 		set : x=>{
@@ -153,5 +169,4 @@ app.subject=()=>{
 		get : x=>{
 			return sessionStorage.getItem(x);
 		}
-};
-*/
+};*/

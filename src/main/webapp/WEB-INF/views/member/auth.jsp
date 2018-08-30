@@ -29,5 +29,13 @@
       </div>
     </nav>
     <script>
-    	app.user.set('memID')
+    	user.session({
+    		memID : '${user.memID}',
+    		name : '${user.name}',
+    		gender : '${user.gender}',
+    		age : '${user.age}',
+    		roll : '${user.roll}',
+    		teamID : '${user.teamID}'
+    	});
+    	/* app.user.set('memID') */
     </script>
