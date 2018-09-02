@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.gms.web.domain.MemberDTO;
 import com.gms.web.service.MemberService;
@@ -29,13 +30,9 @@ public class MemberController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String add(@ModelAttribute MemberDTO member) {
 		logger.info("MemberController add ::: {}.", "add");
-		System.out.println("ADD 1 " + member);
+		System.out.println("MemberController ADD 정보 " + member);
 		memberService.add(member);
-		/*Map<String, Object> p = new HashMap<>();
-		p.put("add", member);
-		System.out.println("name is "+ member.getName());*/
 		return "public:member/login.tiles";
-		//return "login_page";
 	}
 	@RequestMapping("/list")
 	public void list() {}
@@ -46,38 +43,13 @@ public class MemberController {
 						   , @ModelAttribute("member") MemberDTO member
 						   , @ModelAttribute("user") MemberDTO user) {
 		logger.info("\n--------- MemberController {} !!-----","retrieve()");
+		System.out.println("MemberController retrieve member 징입 정보 " + member);
+		System.out.println("MemberController retrieve user 정보 " + user.getMemID());
 		member.setMemID(user.getMemID());
 		model.addAttribute("user", memberService.retrieve(member));
+		System.out.println("MemberController retrieve member 징입후 정보 " + member);
 		return "auth:member/retrieve.tiles";
-		//System.out.println(memID);
-		/*MemberDTO m = memberService.retrieve(memID);
-		model.addAttribute("user", m);
-		return "retrieve_page";*/
-		//member.setMemID(memID);
-		//String res = "";
-		/*switch(action) {
-		case "modify":
-			logger.info("MemberController modify ::: {}.", "modify");
-			res = "modify_page";
-			break;
-		case "remove":
-			logger.info("MemberController remove ::: {}.", "remove");
-			res = "remove_page";
-			break;
-		default:
-			logger.info("MemberController retrieve ::: {}.", "retrieve");
-			res = "retrieve_page";
-			break;
-		}*/
-		/*if(action.equals("modify")) {
-			res = "modify_page";
-		}else if(action.equals("remove")) {
-			res = "remove_page";
-		}else {
-			res = "retrieve_page";
-		}*/
-		//model.addAttribute("user", memberService.retrieve(member));
-		//return res;
+		
 	}
 	@RequestMapping("/count")
 	public void count() {}
@@ -86,62 +58,45 @@ public class MemberController {
 						, @ModelAttribute("user") MemberDTO user
 						,Model model) {
 		logger.info("MemberController modify ::: {}.", "ENTER");
-		System.out.println("modify 1 " + member.getMemID());
-		//member.setMemID(((MemberDTO)session.getAttribute("user")).getMemID());
+		System.out.println("MemberController modify member 진입 정보 " + member);
+		System.out.println("MemberController modify user 정보 " + user.getMemID());
 		member.setMemID(user.getMemID());
 		memberService.modify(member);
 		model.addAttribute("user", memberService.retrieve(member));
+		System.out.println("MemberController modify 진입후 정보 " + member);
 		return "auth:common/content.tiles";
-		//MemberDTO m = memberService.retrieve(memID);
-		//model.addAttribute("user", m);
-		//return "retrieve_page";
 	}
 	@RequestMapping(value="/remove", method=RequestMethod.POST)
 	public String remove(@ModelAttribute("member") MemberDTO member
 						, @ModelAttribute("user") MemberDTO user
 						,Model model) {
 		logger.info("MemberController remove ::: {}.", "ENTER");
-		System.out.println("remove 1 " + member.getMemID());
-		System.out.println("member session : "+ member.getPassword());
+		System.out.println("MemberController remove member 진입 정보 " + member);
+		System.out.println("MemberController remove user 정보 " + user.getMemID());
 		member.setMemID(user.getMemID());
 		memberService.remove(member);
+		System.out.println("MemberController remove 진입후 정보 " + member);
 		return "redirect:/";
 	}
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@ModelAttribute("member") MemberDTO member, Model model,
 			HttpSession session) {
 		logger.info("MemberController login ::: {}.", "ENTER");
-		//boolean m = memberService.login(member);
-		member = memberService.login(member);
-		String f = "";
-		if(member != null) {
+		System.out.println("MemberController login member 진입 정보 " + member);
+		//member = memberService.login(member);
+		String f = "public:member/login.tiles";
+		if(memberService.login(member) != null) {
 			f = "auth:common/content.tiles";
 			model.addAttribute("user", memberService.retrieve(member));
-			//session.setAttribute("user",memberService.retrieve(member));
-			/*model.addAttribute("user", );*/
-		}else {
+		}/*else {
 			f = "public:member/login.tiles";
-		}
-		
-		/*if(m == true) {
-		f = "login_success";
-		MemberDTO mem = memberService.retrieve(member.getMemID());
-		model.addAttribute("user", mem);
-		}else {
-		f = "login_page";
-		}*/
-		
-		/*if(m == true) {
-			f = "login_success";
-			model.addAttribute("user", memberService.retrieve(member));
-		}else {
-			f = "login_page";
 		}*/
 		return f;
 	}
 	@RequestMapping("/logout")
-	public String logout() {
+	public String logout(SessionStatus session) {
 		logger.info("MemberController logout ::: {}.", "ENTER");
+		session.setComplete();
 		return "redirect:/";
 	}
 	@RequestMapping("/fileupload")
