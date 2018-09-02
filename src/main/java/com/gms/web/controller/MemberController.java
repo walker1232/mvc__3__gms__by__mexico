@@ -3,6 +3,8 @@ package com.gms.web.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import com.gms.web.service.MemberService;
 
 @Controller
 @RequestMapping("/member")
+@SessionAttributes("user")
 public class MemberController {	
 	static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Autowired MemberDTO member;
@@ -31,22 +34,28 @@ public class MemberController {
 		/*Map<String, Object> p = new HashMap<>();
 		p.put("add", member);
 		System.out.println("name is "+ member.getName());*/
-		return "login_page";
+		return "public:member/login.tiles";
+		//return "login_page";
 	}
 	@RequestMapping("/list")
 	public void list() {}
 	@RequestMapping("/search")
 	public void search() {}
-	@RequestMapping("/retrieve/{memID}/{action}")
-	public String retrieve(@PathVariable String memID, @PathVariable String action ,Model model) {
+	@RequestMapping("/retrieve")
+	public String retrieve(Model model
+						   , @ModelAttribute("member") MemberDTO member
+						   , @ModelAttribute("user") MemberDTO user) {
 		logger.info("\n--------- MemberController {} !!-----","retrieve()");
-		System.out.println(memID);
+		member.setMemID(user.getMemID());
+		model.addAttribute("user", memberService.retrieve(member));
+		return "auth:member/retrieve.tiles";
+		//System.out.println(memID);
 		/*MemberDTO m = memberService.retrieve(memID);
 		model.addAttribute("user", m);
 		return "retrieve_page";*/
-		member.setMemID(memID);
-		String res = "";
-		switch(action) {
+		//member.setMemID(memID);
+		//String res = "";
+		/*switch(action) {
 		case "modify":
 			logger.info("MemberController modify ::: {}.", "modify");
 			res = "modify_page";
@@ -59,7 +68,7 @@ public class MemberController {
 			logger.info("MemberController retrieve ::: {}.", "retrieve");
 			res = "retrieve_page";
 			break;
-		}
+		}*/
 		/*if(action.equals("modify")) {
 			res = "modify_page";
 		}else if(action.equals("remove")) {
@@ -67,41 +76,51 @@ public class MemberController {
 		}else {
 			res = "retrieve_page";
 		}*/
-		model.addAttribute("user", memberService.retrieve(member));
-		return res;
+		//model.addAttribute("user", memberService.retrieve(member));
+		//return res;
 	}
 	@RequestMapping("/count")
 	public void count() {}
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
-	public String modify(@ModelAttribute("member") MemberDTO member, Model model) {
+	public String modify(@ModelAttribute("member") MemberDTO member
+						, @ModelAttribute("user") MemberDTO user
+						,Model model) {
 		logger.info("MemberController modify ::: {}.", "ENTER");
 		System.out.println("modify 1 " + member.getMemID());
-		//member.setMemID(memID);
+		//member.setMemID(((MemberDTO)session.getAttribute("user")).getMemID());
+		member.setMemID(user.getMemID());
 		memberService.modify(member);
 		model.addAttribute("user", memberService.retrieve(member));
+		return "auth:common/content.tiles";
 		//MemberDTO m = memberService.retrieve(memID);
 		//model.addAttribute("user", m);
-		return "retrieve_page";
+		//return "retrieve_page";
 	}
 	@RequestMapping(value="/remove", method=RequestMethod.POST)
-	public String remove(@ModelAttribute("member") MemberDTO member, Model model) {
+	public String remove(@ModelAttribute("member") MemberDTO member
+						, @ModelAttribute("user") MemberDTO user
+						,Model model) {
 		logger.info("MemberController remove ::: {}.", "ENTER");
 		System.out.println("remove 1 " + member.getMemID());
 		System.out.println("member session : "+ member.getPassword());
+		member.setMemID(user.getMemID());
 		memberService.remove(member);
 		return "redirect:/";
 	}
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(@ModelAttribute("member") MemberDTO member, Model model) {
+	public String login(@ModelAttribute("member") MemberDTO member, Model model,
+			HttpSession session) {
 		logger.info("MemberController login ::: {}.", "ENTER");
 		//boolean m = memberService.login(member);
 		member = memberService.login(member);
 		String f = "";
 		if(member != null) {
-			f = "login_success";
+			f = "auth:common/content.tiles";
 			model.addAttribute("user", memberService.retrieve(member));
+			//session.setAttribute("user",memberService.retrieve(member));
+			/*model.addAttribute("user", );*/
 		}else {
-			f = "login_page";
+			f = "public:member/login.tiles";
 		}
 		
 		/*if(m == true) {

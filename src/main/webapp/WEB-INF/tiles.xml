@@ -14,18 +14,20 @@
     	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
     </definition>
     <definition name="auth:*/*.tiles" extends="public">
-    	<put-attribute name="nav" value="/WEB-INF/views/{1}/{2}.jsp"/>
-    	<put-attribute name="content" value="/WEB-INF/views/common/content.jsp"/>
-    </definition>
-    <definition name="login_success" extends="public">
     	<put-attribute name="nav" value="/WEB-INF/views/member/auth.jsp"/>
-    	<!-- <put-attribute name="content" value="/WEB-INF/views/member/retrieve.jsp"/> -->
+    	<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
+    	<!-- <put-attribute name="nav" value="/WEB-INF/views/{1}/{2}.jsp"/>
+    	<put-attribute name="content" value="/WEB-INF/views/common/content.jsp"/> -->
+    </definition>
+   <!--  <definition name="login_success" extends="public">
+    	<put-attribute name="nav" value="/WEB-INF/views/member/auth.jsp"/>
+    	<put-attribute name="content" value="/WEB-INF/views/member/retrieve.jsp"/>
     	<put-attribute name="content" value="/WEB-INF/views/common/content.jsp"/>
     </definition>
     <definition name="login_page" extends="public">
     	<put-attribute name="nav" value="/WEB-INF/views/common/nav.jsp"/>
     	<put-attribute name="content" value="/WEB-INF/views/member/login.jsp"/>
-    	<!-- <put-attribute name="content" value="/WEB-INF/views/common/content.jsp"/> -->
+    	<put-attribute name="content" value="/WEB-INF/views/common/content.jsp"/>
     </definition>
    <definition name="retrieve_page" extends="public">
     	<put-attribute name="nav" value="/WEB-INF/views/member/auth.jsp"/>
@@ -38,7 +40,7 @@
     <definition name="remove_page" extends="public">
     	<put-attribute name="nav" value="/WEB-INF/views/member/auth.jsp"/>
     	<put-attribute name="content" value="/WEB-INF/views/member/remove.jsp"/>
-    </definition>
+    </definition> -->
     
 </tiles-definitions>
 

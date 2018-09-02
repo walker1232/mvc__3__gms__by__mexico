@@ -61,17 +61,26 @@ app = {
 	    	});
 	    	$('#modify_btn').click(()=>{
 	    		alert('업데이트 버튼 클릭');
-	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/modify';
+	    		location.href = app.x()+'/move/auth/member/modify';
 	    		/*location.href = app.x()+'/move/public/member/modify';*/
 	    	});
+	    	/*$('#modify_btn').click(()=>{
+	    		alert('업데이트 버튼 클릭');
+	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/modify';
+	    		location.href = app.x()+'/move/public/member/modify';
+	    	});*/
 	    	$('#modify_submit').click(()=>{
 	    		$('#modify_form').attr({action:app.x()+"/member/modify", 
 	    			method:"POST"}).submit();
 	    	});
 	    	$('#remove_btn').click(()=>{
 	    		alert('삭제 버튼 클릭');
-	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/remove';
+	    		location.href = app.x()+'/move/auth/member/remove';
 	    	});
+	    	/*$('#remove_btn').click(()=>{
+	    		alert('삭제 버튼 클릭');
+	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/remove';
+	    	});*/
 	    	$('#remove_submit').click(()=>{
 	    		$('#remove_form').attr({action:app.x()+"/member/remove", 
 	    			method:"POST"}).submit();
@@ -79,8 +88,13 @@ app = {
 	    	$('#retrieve_btn').click(()=>{
 	    		alert('마이페이스 버튼 클릭');
 	    		/*location.href = app.x()+'/move/public/member/retrieve';*/
-	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/retrieve';
+	    		location.href = app.x()+'/member/retrieve';
 	    	});
+	    	/*$('#retrieve_btn').click(()=>{
+	    		alert('마이페이스 버튼 클릭');
+	    		location.href = app.x()+'/move/public/member/retrieve';
+	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/retrieve';
+	    	});*/
 	    	
 	    },
 	    setContenView : ()=>{
