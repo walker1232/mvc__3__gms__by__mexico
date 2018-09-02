@@ -64,11 +64,6 @@ app = {
 	    		location.href = app.x()+'/move/auth/member/modify';
 	    		/*location.href = app.x()+'/move/public/member/modify';*/
 	    	});
-	    	/*$('#modify_btn').click(()=>{
-	    		alert('업데이트 버튼 클릭');
-	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/modify';
-	    		location.href = app.x()+'/move/public/member/modify';
-	    	});*/
 	    	$('#modify_submit').click(()=>{
 	    		$('#modify_form').attr({action:app.x()+"/member/modify", 
 	    			method:"POST"}).submit();
@@ -77,10 +72,6 @@ app = {
 	    		alert('삭제 버튼 클릭');
 	    		location.href = app.x()+'/move/auth/member/remove';
 	    	});
-	    	/*$('#remove_btn').click(()=>{
-	    		alert('삭제 버튼 클릭');
-	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/remove';
-	    	});*/
 	    	$('#remove_submit').click(()=>{
 	    		$('#remove_form').attr({action:app.x()+"/member/remove", 
 	    			method:"POST"}).submit();
@@ -90,11 +81,7 @@ app = {
 	    		/*location.href = app.x()+'/move/public/member/retrieve';*/
 	    		location.href = app.x()+'/member/retrieve';
 	    	});
-	    	/*$('#retrieve_btn').click(()=>{
-	    		alert('마이페이스 버튼 클릭');
-	    		location.href = app.x()+'/move/public/member/retrieve';
-	    		location.href = app.x()+'/member/retrieve/'+user.get('memID')+'/retrieve';
-	    	});*/
+
 	    	
 	    },
 	    setContenView : ()=>{
@@ -127,9 +114,6 @@ app.i = ()=>{
 	return app.session.path('img');
 };
 
-app.userid = ()=>{
-	return sessionStorage.getItem('memID');
-}
 
 
 user.session = x =>{
@@ -143,45 +127,3 @@ user.session = x =>{
 user.get = x=>{
 	return sessionStorage.getItem(x);
 }
-
-/*app.memID=()=>{
-	return app.sessionStorage.getItem('memID');
-}
-app.name=()=>{
-	return app.sessionStorage.getItem('name');
-}
-app.teamID=()=>{
-	return app.sessionStorage.getItem('teamID')
-}
-app.ssn=()=>{
-	return app.sessionStorage.getItem('ssn');
-}
-app.gender=()=>{
-	return app.sessionStorage.getItem('gender');
-}
-app.age=()=>{
-	return app.sessionStorage.getItem('age');
-}
-app.roll=()=>{
-	return app.sessionStorage.getItem('roll');
-}
-app.subject=()=>{
-	return app.sessionStorage.getItem('subject');
-}*/
-
-/*var user = {
-		set : x=>{
-			sessionStorage.setItem('memID',x.memID);
-			sessionStorage.setItem('teamID',x.teamID);
-			sessionStorage.setItem('name',x.name);
-			sessionStorage.setItem('roll',x.roll);
-			sessionStorage.setItem('password',x.password);
-			sessionStorage.setItem('ssn',x.ssn);
-			sessionStorage.setItem('gender',x.gender);
-			sessionStorage.setItem('age',x.age);
-			sessionStorage.setItem('subject',x.subject);
-		},
-		get : x=>{
-			return sessionStorage.getItem(x);
-		}
-};*/
